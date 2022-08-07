@@ -1,0 +1,473 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: 62.5%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+button, select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::-moz-selection { /* Code for Firefox */
+    color: #704CE0;
+    background: #b6dcdd;
+}
+
+::selection {
+    color: #704CE0;
+    background: #b6dcdd;
+}
+
+body {
+    font-family: "Overpass", sans-serif;
+    font-size: 1.4rem;
+    width: 100vw;
+    min-height: calc(100vh - 50px);
+    background-image: url("https://dropi.space/assets/circle-scatter-haikei.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#root {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 0;
+}
+
+.header__container {
+    width: 100%;
+    height: 60px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 60px;
+}
+
+.header__container h2 {
+    font-size: 4.4rem;
+    align-self: end;
+}
+
+.header__img {
+    width: 60px;
+    height: 60px;
+    font-size: 4rem;
+    color: #534e70;
+    background-color: #c6bdf8;
+    background-image: url(../image/Foto.jpg);
+    background-size: cover;
+    display: grid;
+    place-content: center;
+    border-radius: 20px;
+}
+
+/* Main section */
+
+.main__container {
+    width: 100%;
+}
+
+.main__count {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.main__search {
+    width: 300px;
+    height: 70px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
+    border: 1px solid #eeeff5;
+    border-radius: 30px;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    place-content: center;
+}
+
+.search__icon {
+    width: 100%;
+    height: 60px;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f2f8;
+    border-radius: 30px;
+}
+
+.search__input {
+    width: 100%;
+    padding-left: 10px;
+    font-family: "Overpass", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+}
+
+.main__info {
+    margin-top: 50px;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.main__list {
+    margin-top: 20px;
+}
+
+.list__item, .loading__container {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 700px;
+    height: 70px;
+    display: grid;
+    grid-template-columns: 60px 80fr 160px 10fr;
+    gap: 5px;
+    place-items: center;
+    text-align: center;
+    border-radius: 30px;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.loading__container {
+    background: linear-gradient(90deg, #e4e4e4, #a8a8a8);
+    background-size: 500% 500%;
+    animation: loadingAnimation 2s ease-in-out infinite;
+}
+
+.loading__container .item__check {
+    border: 4px solid #ffffff; 
+}
+
+.loading__container .item__delete {
+    color: #ffffff;;
+}
+
+.item__check {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: none;
+    border: 4px solid #1a1f48;
+}
+
+.item__check span {
+    display: none;
+    margin-top: 2px;
+    font-size: 2rem;
+}
+
+.completed .item__check span {
+    display: block;
+}
+
+.item__text {
+    justify-self: left;
+    font-size: 1.8rem;
+    
+}
+
+.item__delete {
+    font-size: 2rem;
+    color: #c00000;
+}
+
+.main__add-button {
+    position: fixed;
+    z-index: 1;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    color: #ffffff;
+    background-color: #1a1f48;
+    border: none;
+    border-radius: 30px;
+    transform: rotate(0);
+    transition: .3s ease;
+}
+
+.main__add-button:hover {
+    transform: rotate(224deg);
+}
+
+/* Modal */
+
+.modal__background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #00000065;
+}
+
+.modal__blur {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.modal__form {
+    width: 100%;
+    max-width: 600px;
+    min-height: 600px;
+    height: auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 30px;
+}
+
+.form__title {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 4.5rem;
+    width: 250px;
+    border-right: 3px solid #9d94d1;
+}
+
+.form__select-container {
+    width: 250px;
+    height: 65px;
+    margin-top: 45px;
+    padding: 10px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    border-radius: 30px;
+}
+
+.select__icon {
+    width: 100%;
+    height: 100%;
+    max-width: 55px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    background-color: #ffffff;
+    font-size: 3.2rem;
+}
+
+.select__label {
+    position: absolute;
+    right: 60px;
+    top: 15px;
+    font-size: 1.4rem;
+    color: #818181;
+}
+
+.select__select {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 25px;
+    font-family: "Overpass", sans-serif;
+    font-size: 1.6rem;
+    color: #000000;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.form__text {
+    margin-top: 30px;
+    width: 100%;
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-family: 'Overpass', sans-serif;
+    outline: none;
+    border-radius: 30px;
+    border: 1px solid #eeeff5;
+}
+
+.form__text__label{
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-family: 'Overpass', sans-serif;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.form__fecha{
+    margin-top: 20px;
+    height: 40px;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 1.8rem;
+    border: 1px solid #eeeff5;
+    font-weight: 300;
+    font-family: 'Overpass', sans-serif;
+}
+
+.form__buttons {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form__buttons button {
+    width: 100px;
+    height: 40px;
+    font-family: 'Overpass', sans-serif;
+    font-size: 2rem;
+    outline: none;
+    color: #3a3a3a;
+}
+
+.buttons__cancel {
+    background-color: #eeeff5;
+    border: none;
+    border-radius: 30px;
+}
+
+.form__buttons .buttons__submit {
+    border: none;
+    background-color: #1a1f48;
+    color: #ffffff;
+    border-radius: 30px;
+}
+
+footer {
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+/* status */
+
+.completed .item__check {
+    color: #ffffff;
+    background-color: #1a1f48;
+    border-radius: 50%;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.completed .item__text {
+    text-decoration: line-through;
+}
+
+.list__item.high, .form__select-container.high {
+    background-color: #f7ced1;
+}
+
+.list__item.medium, .form__select-container.medium {
+    background-color: #ffe3c7;
+}
+
+.list__item.low, .form__select-container.low {
+    background-color: #d6f1ff;
+}
+
+.list__item.completed {
+    background-color: #cabfff;
+    transition-duration: 2s;
+}
+
+.select__icon.high {
+    color: #ff3435;
+}
+
+.select__icon.medium {
+    color: #f5803c;
+}
+
+.select__icon.low {
+    color: #74ccf8;
+}
+
+.form__select-container__curso {
+    width: 520px;
+    height: 65px;
+    margin-top: 40px;
+    padding: 10px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    border-radius: 30px;
+}
+
+.select__icon.buscar {
+    color: #00bbf9;
+}
+
+.select__icon.html5 {
+    color: #fb5607;
+}
+
+.select__icon.css {
+    color: #8338ec;
+}
+
+.select__icon.react{
+    color: #52b69a;
+}
+
+.select__icon.angular{
+    color: #bc4749;
+}
+
+/* .select__icon.angular .fa-angular:before {
+    color: blue;
+} */
+
+.list__item.buscar, .form__select-container__curso.buscar {
+    background-color: #90dbf4;
+}
+
+.list__item.html5, .form__select-container__curso.html5 {
+    background-color: #ffcfd2;
+}
+
+.list__item.css, .form__select-container__curso.css {
+    background-color: #cfbaf0;
+}
+
+.list__item.react, .form__select-container__curso.react {
+    background-color: #98f5e1;
+}
+
+.list__item.angular, .form__select-container__curso.angular {
+    background-color: #ffadad;
+}
